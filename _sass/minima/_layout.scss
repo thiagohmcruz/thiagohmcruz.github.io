@@ -105,6 +105,26 @@
 /**
  * Site footer
  */
+.nav-footer {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.nav-footer svg {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.p-footer {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: $small-font-size;
+  color: $grey-color;
+}
+
 .site-footer {
   border-top: 1px solid $grey-color-light;
   padding: $spacing-unit 0;
