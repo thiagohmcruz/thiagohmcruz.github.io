@@ -3,7 +3,7 @@ layout: home
 title: About
 ---
 
-<img class="avatar-home" src="me.jpg" width=200 alt="That's me"/>
+<img class="avatar-home" src="/assets/me.jpg" width=200 alt="That's me"/>
 
 I'm a programmer with 7+ years of experience developing for Apple platforms.
 

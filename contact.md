@@ -4,7 +4,7 @@ title: Contact
 permalink: /contact/
 ---
 
-<img class="avatar-contact" src="../me.jpg" width=200 alt="That's me" style="margin-bottom:$spacing-unit;"/>
+<img class="avatar-contact" src="../assets/me.jpg" width=200 alt="That's me" style="margin-bottom:$spacing-unit;"/>
 
 <div class="center">
 <ul class="social-media-list">
