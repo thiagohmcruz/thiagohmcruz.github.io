@@ -1,10 +1,7 @@
 title: Thiago Cruz
-email: thiago.hmcruz@gmail.com
-baseurl: ""
-url: ""
+github_username: thiagohmcruz
+linkedin_username: thiagohmcruz
 twitter_username: thiago_hmcruz
-github_username:  thiagohmcruz
-
 theme: minima
 plugins:
   - jekyll-feed
