@@ -118,7 +118,18 @@
 .contact-list,
 .social-media-list {
   list-style: none;
-  margin-left: 0;
+  margin-left: 20px;
+  margin-right: auto;
+  text-align: left;
+}
+
+@include media-query($on-palm) {
+  .social-media-list {
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
 }
 
 .footer-col-wrapper {
@@ -175,19 +186,51 @@
 /**
  * Page content
  */
- .avatar {
+
+ div.center {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
+ @include media-query($on-palm) {
+  div.center {
+    width: 100%;
+  }
+}
+
+ .avatar-contact {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $spacing-unit;
+  }
+
+ .avatar-home {
+   display: block;
    float: right;
    margin-left: $spacing-unit;
    margin-bottom: auto;
  }
 
  @include media-query($on-palm) {
-  .avatar {
+  .avatar-home {
     float: none;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: $spacing-unit;
+    width: 100%;
+  }
+
+  .avatar-contact {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $spacing-unit;
+    width: 100%;
   }
 }
 
@@ -233,12 +276,12 @@
 }
 
 .post-title {
-  @include relative-font-size(2.625);
+  @include relative-font-size(2);
   letter-spacing: -1px;
   line-height: 1;
 
   @include media-query($on-laptop) {
-    @include relative-font-size(2.25);
+    @include relative-font-size(2);
   }
 }
 
