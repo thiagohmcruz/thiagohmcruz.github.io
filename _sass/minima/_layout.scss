@@ -207,44 +207,46 @@
  * Page content
  */
 
- div.center {
+div.center {
   display: table;
   margin-left: auto;
   margin-right: auto;
- }
+}
 
- @include media-query($on-palm) {
+@include media-query($on-palm) {
   div.center {
     width: 100%;
   }
 }
 
- .avatar-contact {
-    float: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: $spacing-unit;
-  }
+img[src*="#avatar-contact"] {
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: $spacing-unit;
+  width: 200px;
+}
 
- .avatar-home {
-   display: block;
-   float: right;
-   margin-left: $spacing-unit;
-   margin-bottom: auto;
- }
+img[src*="#avatar-home"] {
+  display: block;
+  float: right;
+  margin-left: $spacing-unit;
+  margin-bottom: auto;
+  width: 200px;
+}
 
  @include media-query($on-palm) {
-  .avatar-home {
+  img[src*="#avatar-home"] {
     float: none;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: $spacing-unit;
     width: 100%;
-  }
+   }
 
-  .avatar-contact {
+  img[src*="#avatar-contact"] {
     float: none;
     display: block;
     margin-left: auto;
