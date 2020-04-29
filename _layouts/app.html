@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+        {% if page.appidentifier and page.appdescription and page.appname %}
+        <div style="text-align: center;">
+          <img class="grid-item-icon" src="{{ site.baseurl }}/assets/{{ page.appidentifier }}/icon.jpg">
+          <h1>{{ page.appname }}</h1>
+        </div>        
+        <blockquote style="text-align: justify;">{{ page.appdescription }}</blockquote>
+        {% endif %}
+        {% if page.appidentifier and page.has_screenshots and page.ss_ext %}
+        <div class="grid-container-ss">
+          <div class="grid-item">
+            <img class="grid-item-ss" src="{{ site.baseurl }}/assets/{{ page.appidentifier }}/ss-1.{{ page.ss_ext }}">
+          </div>
+          <div class="grid-item">
+              <img class="grid-item-ss" src="{{ site.baseurl }}/assets/{{ page.appidentifier }}/ss-2.{{ page.ss_ext }}">
+          </div>
+          <div class="grid-item">
+              <img class="grid-item-ss" src="{{ site.baseurl }}/assets/{{ page.appidentifier }}/ss-3.{{ page.ss_ext }}">
+          </div>
+        </div>
+        {% endif %}      
+        <br><br>
+        <p style="text-align: center;"><a href="/projects">Back to projects</a></p>
+      </div>
+    </main>
+
+  </body>
+
+  {%- include footer.html -%}
+
+</html>

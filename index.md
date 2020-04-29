@@ -24,6 +24,6 @@ int main(int argc, char **argv) {
 }
 {% endhighlight %}
 
-To see what I did next check out my [projects](/projects).
+To see what I did next check out my [projects](/projects) page.
 
 Feel free to [contact](/contact) me anytime.
