@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects/
 ---
 
-These are the most relevant projects I've been part of. Sometimes as a full-time mobile engineer, sometimes as a freelancer. The first section contains the most recent (i.e. swift) projects, and the oldest (i.e. Objective-C) projects are presented next.
+These are the most relevant projects I've been part of. Sometimes as a full-time mobile engineer, sometimes as a freelancer. The first section contains the most recent (i.e. swift) projects, and the older (i.e. Objective-C) projects are presented next.
 
 # Most Recent
 
@@ -104,3 +104,7 @@ These are the most relevant projects I've been part of. Sometimes as a full-time
     <p class="grid-item-p-title">Zoo Chalenge</p>
   </div>
 </div>
+
+# University
+
+I hold a bachelor's degree in Applied Mathematics with focus in Mathematical Methods. In case you're curious and understand both mathematics and portuguese here's <a href="{{ site.baseurl }}/assets/tcc.pdf" target="_blank">a link</a> to my final thesis.
