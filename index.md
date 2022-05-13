@@ -5,7 +5,7 @@ title: About
 
 ![That's me](/assets/me.jpg#avatar-home)
 
-I'm a programmer with 7+ years of experience developing for Apple platforms.
+I'm a programmer with 10+ years of experience developing for Apple platforms.
 
 Over the years I got involved in projects not related to mobile development as well. I enjoy looking for elegant solutions to complex problems so every now and then I get myself playing around with different tools and/or programming languages.
 
