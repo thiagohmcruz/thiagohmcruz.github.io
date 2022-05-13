@@ -4,7 +4,7 @@ baseurl: ""
 url: "https://thiagohmcruz.github.io"
 github_username: thiagohmcruz
 linkedin_username: thiagohmcruz
-twitter_username: thiago_hmcruz
+twitter_username: thiagohmcruz
 header_pages:
   - index.md
   - projects.md
