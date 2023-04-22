@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects/
 ---
 
-Below you'll find relevant past projects I've contributed to. Some are still going and some are not. My current focus is on iOS build systems, developer tools and Developer Experience in general but I've spent a long time building apps before that.
+Below you'll find relevant past projects I've contributed to. Some are still going and some are not. Currently, I'm focused on iOS build systems and Developer Experience but I've spent a long time building client facing features before that.
 
 <div class="grid-container">
   <div class="grid-item">
