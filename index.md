@@ -1,5 +1,6 @@
 ---
 layout: home
+title: About
 ---
 
 ![My avatar](/assets/me.jpg#avatar-home "That's me")
