@@ -283,7 +283,7 @@ img[src*="#avatar-home"] {
   margin-left: $spacing-unit;
   margin-bottom: auto;
   border-radius: 50%;
-  width: 200px;
+  max-width: 40%;
 }
 
  @include media-query($on-palm) {
