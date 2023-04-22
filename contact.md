@@ -4,7 +4,7 @@ title: Contact
 permalink: /contact/
 ---
 
-![That's me](/assets/me.jpg#avatar-contact)
+![My avatar](/assets/me.jpg#avatar-home "That's me")
 
 <div class="center">
 <ul class="social-media-list">
