@@ -4,9 +4,7 @@ title: Projects
 permalink: /projects/
 ---
 
-These are the most relevant projects I've been part of. Sometimes as a full-time mobile engineer, sometimes as a freelancer. The first section contains the most recent (i.e. swift) projects, and the older (i.e. Objective-C) projects are presented next.
-
-# Most Recent
+Below you'll find relevant past projects I've contributed to. Some are still going and some are not. My current focus is on iOS build systems, developer tools and Developer Experience in general but I've spent a long time building apps before that.
 
 <div class="grid-container">
   <div class="grid-item">
@@ -44,12 +42,7 @@ These are the most relevant projects I've been part of. Sometimes as a full-time
     <p class="grid-item-p-title">WebMeeting Direct</p>
     <p class="grid-item-p-subtitle">Corporate online meetings</p>
   </div>
-</div>
-
-# Older
-
-<div class="grid-container">
-  <div class="grid-item">
+<div class="grid-item">
     <a href="/projects/ezmall">
         <img class="grid-item-icon" src="/assets/ezmall/icon.jpg">
     </a>
@@ -105,6 +98,8 @@ These are the most relevant projects I've been part of. Sometimes as a full-time
   </div>
 </div>
 
-# University
+# Education
 
-I hold a bachelor's degree in Applied Mathematics with focus in Mathematical Methods. In case you're curious and understand both mathematics and portuguese here's <a href="{{ site.baseurl }}/assets/tcc.pdf" target="_blank">a link</a> to my final thesis.
+I'm an alumnus of the <a href="https://www.ime.usp.br/en/home/" target="_blank">Institute of Mathematics and Statistics of the University of São Paulo (IME-USP)</a> and hold a bachelor's degree in <a href="https://www.ime.usp.br/en/graduate/applied-math/" target="_blank">Applied Mathematics</a> with emphasis on "Mathematical Methods" (a.k.a. how to transform theorems into code).
+
+If you understand both Mathematics and Portuguese and are also a naturally curious person like me checkout <a href="{{ site.baseurl }}/assets/tcc.pdf" target="_blank">my thesis</a>! There I explored some weird stuff that happens when you play with weak topologies over normed vector spaces.
