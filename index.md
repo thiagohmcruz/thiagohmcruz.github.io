@@ -7,7 +7,7 @@ title: About me
 
 👋🏼 My name is Thiago and I'm a programmer with 10+ years of experience developing for Apple platforms.
 
-Currently, I'm currently working for <a href="https://block.xyz" target="_blank">Block</a> on the iOS Developer Experience (iOS-DX) team.
+Currently, I'm working for <a href="https://block.xyz" target="_blank">Block</a> on the iOS Developer Experience (iOS-DX) team.
 
 I also help maintain <a href="https://github.com/bazel-ios/rules_ios" target="_blank">rules_ios</a>, <a href="https://github.com/bazel-ios/cocoapods-bazel" target="_blank">cocoapods-bazel</a> and <a href="https://github.com/MobileNativeFoundation/rules_xcodeproj" target="_blank">rules_xcodeproj</a>.
 
