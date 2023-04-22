@@ -1,9 +1,8 @@
 ---
 layout: home
-title: About
 ---
 
-![That's me](/assets/me.jpg#avatar-home)
+![My avatar](/assets/me.jpg#avatar-home "That's me")
 
 I'm a programmer with 10+ years of experience developing for Apple platforms.
 
