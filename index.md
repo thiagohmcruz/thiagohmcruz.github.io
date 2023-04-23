@@ -14,8 +14,9 @@ I also help maintain <a href="https://github.com/bazel-ios/rules_ios" target="_b
 Small list of facts about me:
 
 * I'm a great listener
-* I believe empathy is the most valuable asset any team could have
-* I was born and raised in São Paulo, Brazil. Moved to Canada and lived in Toronto for about 5 years before moving to Waterloo where I'm currently located
-* When I'm not coding I'm reading, eating, binge watching or playing games.
+* I believe empathy is fundamental for any kind of human relationship (personal or professional)to work
+* I was born and raised in São Paulo, Brazil.
+* I'm currently living in Waterloo, Canada, and I spent the 5 years pior living in Toronto
+* When I'm not coding you'll find me reading, eating, binge watching or playing games.
 
-Checkout my past [projects](/projects), my <a href="{{ site.baseurl }}/assets/resume.pdf" target="_blank">resume</a> and feel free to [contact](/contact) me anytime.
+Checkout my past [projects](/projects) or my <a href="{{ site.baseurl }}/assets/resume.pdf" target="_blank">resume</a>. Feel free to [contact](/contact) me anytime.
