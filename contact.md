@@ -10,7 +10,7 @@ permalink: /contact/
 <ul class="social-media-list">
   {%- if site.github_username -%}<li><a href="https://github.com/{{ site.github_username| cgi_escape | escape }}" target="_blank"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg> <span class="username">{{ site.github_username| escape }}</span></a></li>{%- endif -%}
 
-  {% for mst in site.mastodon %}{% if mst.username and mst.instance %}<li><a href="https://{{ mst.instance| cgi_escape | escape}}/@{{mst.username}}" target="_blank"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">{{ mst.username|escape }}</span></a></li>{% endif %}{% endfor %}
+  {% for mst in site.mastodon %}{% if mst.username and mst.instance %}<li><a rel="me" href="https://{{ mst.instance| cgi_escape | escape}}/@{{mst.username}}" target="_blank"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">{{ mst.username|escape }}</span></a></li>{% endif %}{% endfor %}
 
   {%- if site.twitter_username -%}<li><a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}" target="_blank"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg> <span class="username">{{ site.twitter_username| escape }}</span></a></li>{%- endif -%}
 
