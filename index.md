@@ -15,8 +15,8 @@ Small list of facts about me:
 
 * I'm a great listener
 * I believe empathy is fundamental for any kind of human relationship (personal or professional)to work
-* I was born and raised in São Paulo, Brazil.
+* I was born and raised in São Paulo, Brazil
 * I'm currently living in Waterloo, Canada, and I spent the 5 years pior living in Toronto
-* When I'm not coding you'll find me reading, eating, binge watching or playing games.
+* When I'm not coding you'll find me reading, eating, binge watching or playing games
 
 Checkout my past [projects](/projects) or my <a href="{{ site.baseurl }}/assets/resume.pdf" target="_blank">resume</a>. Feel free to [contact](/contact) me anytime.
