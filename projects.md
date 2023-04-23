@@ -98,7 +98,7 @@ Below you'll find relevant past projects I've contributed to. Some are still goi
   </div>
 </div>
 
-# Education
+<h1 class="post-title">Education</h1>
 
 I'm an alumnus of the <a href="https://www.ime.usp.br/en/home/" target="_blank">Institute of Mathematics and Statistics of the University of São Paulo (IME-USP)</a> and hold a bachelor's degree in <a href="https://www.ime.usp.br/en/graduate/applied-math/" target="_blank">Applied Mathematics</a> with emphasis on "Mathematical Methods" (a.k.a. how to transform theorems into code).
 
