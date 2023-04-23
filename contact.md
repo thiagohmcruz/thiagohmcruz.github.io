@@ -6,6 +6,7 @@ permalink: /contact/
 
 <div class="center">
 <img src="/assets/me.jpg#avatar-home" title="That's me"/>
+<p class="contact">Here's where you can find me online:</p>
 <ul class="social-media-list">
   {%- if site.github_username -%}<li><a href="https://github.com/{{ site.github_username| cgi_escape | escape }}" target="_blank"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg> <span class="username">{{ site.github_username| escape }}</span></a></li>{%- endif -%}
 

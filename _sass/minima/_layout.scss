@@ -138,15 +138,19 @@
 .contact-list,
 .social-media-list {
   list-style: none;
-  margin-left: 20px;
+  margin-left: 0px;
   margin-right: auto;
   text-align: left;
 }
 
 @include media-query($on-palm) {
+  p.contact {
+    margin-left: 20px;
+  }
+
   .social-media-list {
     list-style: none;
-    margin-left: auto;
+    margin-left: 20px;
     margin-right: auto;
     text-align: left;
   }
