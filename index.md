@@ -3,7 +3,7 @@ layout: home
 title: About me
 ---
 
-![My avatar](/assets/me.jpg#avatar-home "That's me")
+<img src="/assets/me.jpg#avatar-home" title="That's me"/>
 
 👋🏼 My name is Thiago and I'm a programmer with 10+ years of experience developing for Apple platforms.
 
