@@ -5,6 +5,9 @@ url: "https://thiagohmcruz.me"
 github_username: thiagohmcruz
 linkedin_username: thiagohmcruz
 twitter_username: thiagohmcruz
+mastodon:
+- username: thiagohmcruz
+  instance: mastodon.online
 header_pages:
   - index.md
   - projects.md
