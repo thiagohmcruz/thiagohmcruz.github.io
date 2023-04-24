@@ -102,4 +102,4 @@ Below you'll find relevant past projects I've contributed to. Some are still goi
 
 I'm an alumnus of the <a href="https://www.ime.usp.br/en/home/" target="_blank">Institute of Mathematics and Statistics of the University of São Paulo (IME-USP)</a> and hold a bachelor's degree in <a href="https://www.ime.usp.br/en/graduate/applied-math/" target="_blank">Applied Mathematics</a> with emphasis on "Mathematical Methods" (a.k.a. how to transform theorems into code).
 
-If you understand both Mathematics and Portuguese and are a naturally curious person like me checkout <a href="{{ site.baseurl }}/assets/tcc.pdf" target="_blank">my thesis</a>! There I explore some weird stuff that happens when you play with weak topologies over normed vector spaces.
+If you understand both Mathematics and Portuguese and are a naturally curious person like me, checkout <a href="{{ site.baseurl }}/assets/tcc.pdf" target="_blank">my thesis</a>! There I explore some weird stuff that happens when you play with weak topologies over normed vector spaces.
