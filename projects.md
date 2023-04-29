@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Projects
-permalink: /projects/
+permalink: /projects
 ---
 
 Below you'll find relevant past projects I've contributed to. Some are still going and some are not. Currently, I'm focused on iOS build systems, Xcode integration and Developer Experience but I've spent a long time building client facing features before that.
