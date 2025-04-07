@@ -4,123 +4,50 @@
     <title>Dial0g</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: "Courier New", monospace;
             margin: 0;
             padding: 10px;
-            width: 100%;
-            background: #0a0a0a;
-            color: #00ff41;
-            -webkit-tap-highlight-color: transparent;
+            font-family: system-ui, -apple-system, sans-serif;
         }
         #notes { 
             margin-top: 20px;
-            width: 100%;
         }
         .note { 
-            border-bottom: 1px solid #143214;
+            border-bottom: 1px solid #eee;
             padding: 15px 10px;
             overflow-wrap: break-word;
             word-wrap: break-word;
             word-break: break-word;
-            hyphens: auto;
         }
         .note p {
             max-width: 100%;
         }
         .pubkey { 
-            color: #2a5a2a;
+            color: #666;
             font-size: 0.8em;
             margin-top: 5px;
-            opacity: 0.8;
-        }
-        button { 
-            padding: 8px 12px; 
-            background: #0a0a0a;
-            color: #00ff41;
-            border: 1px solid #143214;
-            cursor: pointer;
-            font-family: "Courier New", monospace;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            -webkit-user-select: none;
-            -webkit-touch-callout: none;
-        }
-        button:hover {
-            background: #143214;
-        }
-        button:focus {
-            outline: none;
-        }
-        button:active {
-            background: #143214;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
         .header {
             padding: 10px;
-            border-bottom: 1px solid #143214;
+            border-bottom: 1px solid #eee;
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
             align-items: center;
         }
-        #relaySelect {
-            flex: 1;
-            min-width: 250px;
-            padding: 8px;
-            background: #0a0a0a;
-            border: 1px solid #143214;
-            color: #00ff41;
-            font-family: "Courier New", monospace;
-            font-size: 14px;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-        }
-        #relaySelect:focus {
-            outline: none;
-            border-color: #00ff41;
-        }
-        #relaySelect option {
-            background: #0a0a0a;
-            color: #00ff41;
-            padding: 8px;
-        }
-        .number-input {
-            width: 60px;
-            padding: 8px;
-            background: #0a0a0a;
-            border: 1px solid #143214;
-            color: #00ff41;
-            font-family: "Courier New", monospace;
-            font-size: 14px;
-            text-align: center;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .number-input:focus {
-            outline: none;
-            border-color: #00ff41;
-        }
         .controls {
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
             align-items: center;
         }
-        pre, code {
-            white-space: pre-wrap;
-            word-wrap: break-word;
+        .number-input {
+            width: 60px;
         }
-        ::selection {
-            background: #143214;
-            color: #00ff41;
-        }
-        /* Remove spinner from number input */
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        input[type=number] {
-            -moz-appearance: textfield;
+        #relaySelect {
+            max-width: 100%;
         }
     </style>
 </head>
@@ -161,7 +88,6 @@
                 const intervalSeconds = getValidatedRefreshInterval();
                 autoRefreshInterval = setInterval(fetchNotes, intervalSeconds * 1000);
                 autoRefreshBtn.textContent = "Auto [On]";
-                autoRefreshBtn.style.borderColor = "#00ff41";
             }
         }
 
@@ -182,13 +108,11 @@
                 clearInterval(autoRefreshInterval);
                 autoRefreshInterval = null;
                 this.textContent = "Auto [Off]";
-                this.style.borderColor = "#143214";
             } else {
                 fetchNotes(); // Immediate refresh
                 const intervalSeconds = getValidatedRefreshInterval();
                 autoRefreshInterval = setInterval(fetchNotes, intervalSeconds * 1000);
                 this.textContent = "Auto [On]";
-                this.style.borderColor = "#00ff41";
             }
             savePreferences();
         });
@@ -203,7 +127,7 @@
 
         // Validate refresh interval when losing focus
         refreshIntervalInput.addEventListener('blur', function() {
-            let value = parseInt(this.value) || 10;
+            let value = parseInt(this.value) || 5;
             value = Math.max(5, Math.min(3600, value));
             this.value = value;
             // Update interval if auto-refresh is on
@@ -228,7 +152,7 @@
 
         // Get validated refresh interval
         function getValidatedRefreshInterval() {
-            let value = parseInt(refreshIntervalInput.value) || 10;
+            let value = parseInt(refreshIntervalInput.value) || 5;
             return Math.max(5, Math.min(3600, value));
         }
 
