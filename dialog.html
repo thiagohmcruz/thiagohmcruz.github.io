@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Nostr Client</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        #notes { margin-top: 20px; }
+        .note { border: 1px solid #eee; padding: 10px; margin-bottom: 10px; }
+        .pubkey { color: #666; font-size: 0.8em; }
+        button { padding: 8px 12px; background: #f0f0f0; border: 1px solid #ddd; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Minimal Nostr Client</h1>
+    <button id="refresh">Refresh (Fetch 10 Notes)</button>
+    <div id="notes"></div>
+
+    <script>
+        const relayUrl = "wss://relay.damus.io"; // Public relay
+        const notesContainer = document.getElementById("notes");
+        
+        // Connect to relay and fetch notes
+        async function fetchNotes() {
+            notesContainer.innerHTML = "<p>Loading...</p>";
+            
+            try {
+                const relay = new WebSocket(relayUrl);
+                const notes = [];
+                
+                relay.onopen = () => {
+                    // Request 10 most recent notes
+                    relay.send(JSON.stringify([
+                        "REQ",
+                        "minimal-client",
+                        { limit: 10 }
+                    ]));
+                };
+                
+                relay.onmessage = (msg) => {
+                    const data = JSON.parse(msg.data);
+                    // Only show notes (ignore other messages)
+                    if (data[0] === "EVENT") notes.push(data[2]);
+                    if (notes.length >= 10) {
+                        relay.close();
+                        displayNotes(notes);
+                    }
+                };
+                
+                relay.onerror = (err) => {
+                    notesContainer.innerHTML = `<p>Error: ${err.message}</p>`;
+                };
+                
+            } catch (err) {
+                notesContainer.innerHTML = `<p>Failed to connect to relay.</p>`;
+            }
+        }
+        
+        // Display fetched notes
+        function displayNotes(notes) {
+            let html = "";
+            notes.forEach(note => {
+                html += `
+                    <div class="note">
+                        <p>${note.content}</p>
+                        <p class="pubkey">From: ${note.pubkey.slice(0, 12)}...</p>
+                    </div>
+                `;
+            });
+            notesContainer.innerHTML = html;
+        }
+        
+        // Button click handler
+        document.getElementById("refresh").addEventListener("click", fetchNotes);
+    </script>
+</body>
+</html>
