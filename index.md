@@ -1,7 +1,6 @@
 ---
 layout: home
 title: About me
-list_title: Blog
 ---
 
 <img src="/assets/me.jpg#avatar-home" title="That's me"/>
