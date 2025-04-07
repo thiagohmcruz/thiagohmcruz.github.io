@@ -7,13 +7,15 @@
         body { 
             margin: 0;
             padding: 10px;
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: "Courier New", monospace;
+            background: #0a0a0a;
+            color: #00ff41;
         }
         #notes { 
             margin-top: 20px;
         }
         .note { 
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #143214;
             padding: 15px 10px;
             overflow-wrap: break-word;
             word-wrap: break-word;
@@ -23,15 +25,45 @@
             max-width: 100%;
         }
         .pubkey { 
-            color: #666;
+            color: #2a5a2a;
             font-size: 0.8em;
             margin-top: 5px;
             overflow-wrap: break-word;
             word-wrap: break-word;
         }
+        .reply-info {
+            color: #2a5a2a;
+            font-size: 0.8em;
+            margin-bottom: 5px;
+        }
+        .parent-note {
+            margin: 10px 0;
+            padding: 10px;
+            background: #0c130c;
+            border-left: 3px solid #143214;
+            position: relative;
+        }
+        .close-parent {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            color: #2a5a2a;
+            border: none;
+            background: none;
+            padding: 5px;
+        }
+        .note-id {
+            cursor: pointer;
+            text-decoration: underline;
+            color: #2a5a2a;
+        }
+        .note-id:hover {
+            color: #00ff41;
+        }
         .header {
             padding: 10px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #143214;
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
@@ -48,6 +80,10 @@
         }
         #relaySelect {
             max-width: 100%;
+        }
+        ::selection {
+            background: #143214;
+            color: #00ff41;
         }
     </style>
 </head>
@@ -156,6 +192,57 @@
             return Math.max(5, Math.min(3600, value));
         }
 
+        // Check if note is a reply
+        function isReply(note) {
+            return note.tags && note.tags.some(tag => tag[0] === 'e');
+        }
+
+        // Get reply reference
+        function getReplyInfo(note) {
+            if (!note.tags) return null;
+            const eTag = note.tags.find(tag => tag[0] === 'e');
+            return eTag ? eTag[1] : null;
+        }
+
+        // Fetch a single note by ID
+        async function fetchParentNote(noteId, targetElement) {
+            try {
+                const relay = new WebSocket(relaySelect.value);
+                
+                relay.onopen = () => {
+                    relay.send(JSON.stringify([
+                        "REQ",
+                        "parent-note",
+                        { ids: [noteId] }
+                    ]));
+                };
+                
+                relay.onmessage = (msg) => {
+                    const data = JSON.parse(msg.data);
+                    if (data[0] === "EVENT") {
+                        const note = data[2];
+                        const parentHtml = `
+                            <div class="parent-note">
+                                <button class="close-parent" onclick="this.parentElement.remove()">×</button>
+                                <p>${note.content}</p>
+                                <p class="pubkey">From: ${note.pubkey}</p>
+                            </div>
+                        `;
+                        targetElement.insertAdjacentHTML('beforebegin', parentHtml);
+                        relay.close();
+                    }
+                };
+                
+                relay.onerror = () => {
+                    console.log("Failed to fetch parent note");
+                    relay.close();
+                };
+                
+            } catch (err) {
+                console.log("Error fetching parent note:", err);
+            }
+        }
+
         // Connect to relay and fetch notes
         async function fetchNotes() {
             notesContainer.innerHTML = "<p>Loading...</p>";
@@ -196,8 +283,12 @@
         function displayNotes(notes) {
             let html = "";
             notes.forEach(note => {
+                const replyId = getReplyInfo(note);
+                const replyInfo = replyId ? 
+                    `<div class="reply-info">↳ Reply to: <span class="note-id" onclick="fetchParentNote('${replyId}', this.closest('.note'))">${replyId}</span></div>` : '';
                 html += `
                     <div class="note">
+                        ${replyInfo}
                         <p>${note.content}</p>
                         <p class="pubkey">From: ${note.pubkey}</p>
                     </div>
