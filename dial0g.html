@@ -43,9 +43,15 @@
             cursor: pointer;
             font-family: "Courier New", monospace;
             -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
         }
         button:hover {
             background: #143214;
+        }
+        button:focus {
+            outline: none;
         }
         button:active {
             background: #143214;
