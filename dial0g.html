@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dial0g</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: "Courier New", monospace;
+            margin: 0;
+            padding: 10px;
+            width: 100%;
+            background: #0a0a0a;
+            color: #00ff41;
+        }
+        #notes { 
+            margin-top: 20px;
+            width: 100%;
+        }
+        .note { 
+            border-bottom: 1px solid #143214;
+            padding: 15px 10px;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
+        }
+        .note p {
+            max-width: 100%;
+        }
+        .pubkey { 
+            color: #2a5a2a;
+            font-size: 0.8em;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+        button { 
+            padding: 8px 12px; 
+            background: #0a0a0a;
+            color: #00ff41;
+            border: 1px solid #143214;
+            cursor: pointer;
+            font-family: "Courier New", monospace;
+        }
+        button:hover {
+            background: #143214;
+        }
+        .header {
+            padding: 10px;
+            border-bottom: 1px solid #143214;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        #relaySelect {
+            flex: 1;
+            min-width: 250px;
+            padding: 8px;
+            background: #0a0a0a;
+            border: 1px solid #143214;
+            color: #00ff41;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #relaySelect:focus {
+            outline: none;
+            border-color: #00ff41;
+        }
+        #relaySelect option {
+            background: #0a0a0a;
+            color: #00ff41;
+            padding: 8px;
+        }
+        .number-input {
+            width: 60px;
+            padding: 8px;
+            background: #0a0a0a;
+            border: 1px solid #143214;
+            color: #00ff41;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            text-align: center;
+        }
+        .number-input:focus {
+            outline: none;
+            border-color: #00ff41;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        pre, code {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        ::selection {
+            background: #143214;
+            color: #00ff41;
+        }
+        /* Remove spinner from number input */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="controls">
+            <button id="refresh">Refresh</button>
+            <button id="autoRefresh">Auto [Off]</button>
+            <input type="number" id="noteCount" class="number-input" value="10" min="1" max="100" title="Number of notes">
+            <input type="number" id="refreshInterval" class="number-input" value="5" min="5" max="3600" title="Refresh interval (seconds)">
+        </div>
+        <select id="relaySelect">
+            <option value="wss://relay.damus.io">wss://relay.damus.io</option>
+            <option value="wss://nos.lol">wss://nos.lol</option>
+            <option value="wss://relay.nostr.band">wss://relay.nostr.band</option>
+        </select>
+    </div>
+    <div id="notes"></div>
+
+    <script>
+        const relaySelect = document.getElementById("relaySelect");
+        const notesContainer = document.getElementById("notes");
+        const noteCountInput = document.getElementById("noteCount");
+        const refreshIntervalInput = document.getElementById("refreshInterval");
+        const autoRefreshBtn = document.getElementById("autoRefresh");
+        let autoRefreshInterval = null;
+
+        // Load saved preferences
+        function loadPreferences() {
+            const prefs = JSON.parse(localStorage.getItem('nostrPrefs')) || {};
+            
+            if (prefs.noteCount) noteCountInput.value = prefs.noteCount;
+            if (prefs.refreshInterval) refreshIntervalInput.value = prefs.refreshInterval;
+            if (prefs.relay) relaySelect.value = prefs.relay;
+            
+            // Restore auto-refresh state
+            if (prefs.autoRefresh) {
+                const intervalSeconds = getValidatedRefreshInterval();
+                autoRefreshInterval = setInterval(fetchNotes, intervalSeconds * 1000);
+                autoRefreshBtn.textContent = "Auto [On]";
+                autoRefreshBtn.style.borderColor = "#00ff41";
+            }
+        }
+
+        // Save preferences
+        function savePreferences() {
+            const prefs = {
+                noteCount: noteCountInput.value,
+                refreshInterval: refreshIntervalInput.value,
+                relay: relaySelect.value,
+                autoRefresh: autoRefreshInterval !== null
+            };
+            localStorage.setItem('nostrPrefs', JSON.stringify(prefs));
+        }
+        
+        // Toggle auto refresh
+        autoRefreshBtn.addEventListener('click', function() {
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+                autoRefreshInterval = null;
+                this.textContent = "Auto [Off]";
+                this.style.borderColor = "#143214";
+            } else {
+                fetchNotes(); // Immediate refresh
+                const intervalSeconds = getValidatedRefreshInterval();
+                autoRefreshInterval = setInterval(fetchNotes, intervalSeconds * 1000);
+                this.textContent = "Auto [On]";
+                this.style.borderColor = "#00ff41";
+            }
+            savePreferences();
+        });
+
+        // Validate note count when losing focus
+        noteCountInput.addEventListener('blur', function() {
+            let value = parseInt(this.value) || 10;
+            value = Math.max(1, Math.min(100, value));
+            this.value = value;
+            savePreferences();
+        });
+
+        // Validate refresh interval when losing focus
+        refreshIntervalInput.addEventListener('blur', function() {
+            let value = parseInt(this.value) || 10;
+            value = Math.max(5, Math.min(3600, value));
+            this.value = value;
+            // Update interval if auto-refresh is on
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+                autoRefreshInterval = setInterval(fetchNotes, value * 1000);
+            }
+            savePreferences();
+        });
+
+        // Handle relay selection
+        relaySelect.addEventListener('change', function() {
+            fetchNotes();
+            savePreferences();
+        });
+
+        // Get validated note count
+        function getValidatedNoteCount() {
+            let value = parseInt(noteCountInput.value) || 10;
+            return Math.max(1, Math.min(100, value));
+        }
+
+        // Get validated refresh interval
+        function getValidatedRefreshInterval() {
+            let value = parseInt(refreshIntervalInput.value) || 10;
+            return Math.max(5, Math.min(3600, value));
+        }
+
+        // Connect to relay and fetch notes
+        async function fetchNotes() {
+            notesContainer.innerHTML = "<p>Loading...</p>";
+            const relayUrl = relaySelect.value;
+            const noteLimit = getValidatedNoteCount();
+            
+            try {
+                const relay = new WebSocket(relayUrl);
+                const notes = [];
+                
+                relay.onopen = () => {
+                    relay.send(JSON.stringify([
+                        "REQ",
+                        "minimal-client",
+                        { limit: noteLimit }
+                    ]));
+                };
+                
+                relay.onmessage = (msg) => {
+                    const data = JSON.parse(msg.data);
+                    if (data[0] === "EVENT") notes.push(data[2]);
+                    if (notes.length >= noteLimit) {
+                        relay.close();
+                        displayNotes(notes);
+                    }
+                };
+                
+                relay.onerror = (err) => {
+                    notesContainer.innerHTML = `<p>Error: ${err.message}</p>`;
+                };
+                
+            } catch (err) {
+                notesContainer.innerHTML = `<p>Failed to connect to relay.</p>`;
+            }
+        }
+        
+        // Display fetched notes
+        function displayNotes(notes) {
+            let html = "";
+            notes.forEach(note => {
+                html += `
+                    <div class="note">
+                        <p>${note.content}</p>
+                        <p class="pubkey">From: ${note.pubkey}</p>
+                    </div>
+                `;
+            });
+            notesContainer.innerHTML = html;
+        }
+        
+        // Button click handler
+        document.getElementById("refresh").addEventListener("click", fetchNotes);
+        
+        // Load preferences and start
+        loadPreferences();
+        fetchNotes();
+    </script>
+</body>
+</html>
