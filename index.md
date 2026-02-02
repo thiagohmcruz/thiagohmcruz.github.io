@@ -5,7 +5,7 @@ title: About me
 
 <img src="/assets/me.jpg#avatar-home" title="That's me"/>
 
-👋🏼 My name is Thiago and I'm a programmer with 10+ years of experience developing for Apple platforms.
+👋🏼 My name is Thiago and I'm a programmer with 13+ years of experience developing for Apple platforms.
 
 Currently, I'm working for <a href="https://block.xyz" target="_blank">Block</a> on the iOS Developer Experience (iOS-DX) team.
 
@@ -14,9 +14,8 @@ I also help maintain <a href="https://github.com/bazel-ios/rules_ios" target="_b
 Small list of facts about me:
 
 * I'm a great listener
-* I believe empathy is fundamental for any kind of human relationship (personal or professional) to succeed
-* I was born and raised in São Paulo, Brazil
-* I'm currently living in Waterloo, Canada, and I spent the 5 years prior living in Toronto
-* When I'm not coding you'll find me reading, eating, binge watching or playing games
+* To me empathy is fundamental for any kind of human relationship (personal or professional) to succeed
+* I was born and raised in São Paulo, Brazil and currently living in Toronto, Canada
+* When I'm not coding you'll find me reading, eating, binge watching or gaming
 
 Checkout my past [projects](/projects) or my <a href="{{ site.baseurl }}/assets/resume.pdf" target="_blank">resume</a>. Feel free to [contact](/contact) me anytime.
