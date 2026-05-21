@@ -11,7 +11,7 @@ Over the past 5 years, focused on iOS infrastructure, Bazel, CI/CD, and improvin
 
 Enjoys simplifying complex systems, enabling teams to move faster, and building engineering relationships through collaboration and empathy.
 
-* <a href="{{ site.baseurl }}/assets/resume.pdf" target="_blank">Resume</a>, [past projects](/projects),, and [contact information](/contact).
+* <a href="{{ site.baseurl }}/assets/resume.pdf" target="_blank">Resume</a>, [past projects](/projects), and [contact information](/contact).
 * Open-source maintainer of:
     * <a href="https://github.com/bazel-ios/rules_ios" target="_blank">rules_ios</a>
     * <a href="https://github.com/bazel-ios/cocoapods-bazel" target="_blank">cocoapods-bazel</a>
