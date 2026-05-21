@@ -1,21 +1,18 @@
 ---
 layout: home
-title: About me
+title: About
 ---
 
 <img src="/assets/me.jpg#avatar-home" title="That's me"/>
 
-👋🏼 My name is Thiago and I'm a programmer with 13+ years of experience developing for Apple platforms.
+Senior Software Engineer with 14+ years of experience in the iOS ecosystem, evolving from product engineering into Mobile Platform and Developer Experience.
 
-Currently, I'm working for <a href="https://block.xyz" target="_blank">Block</a> on the iOS Developer Experience (iOS-DX) team.
+Over the past 5 years, focused on iOS infrastructure, Bazel, CI/CD, and improving engineering velocity. Prior to that, spent several years building and shipping high-quality iOS applications across startup environments.
 
-I also help maintain <a href="https://github.com/bazel-ios/rules_ios" target="_blank">rules_ios</a>, <a href="https://github.com/bazel-ios/cocoapods-bazel" target="_blank">cocoapods-bazel</a> and <a href="https://github.com/MobileNativeFoundation/rules_xcodeproj" target="_blank">rules_xcodeproj</a>.
+Enjoys simplifying complex systems, enabling teams to move faster, and building engineering relationships through collaboration and empathy.
 
-Small list of facts about me:
-
-* I'm a great listener
-* To me empathy is fundamental for any kind of human relationship (personal or professional) to succeed
-* I was born and raised in São Paulo, Brazil and currently living in Toronto, Canada
-* When I'm not coding you'll find me reading, eating, binge watching or gaming
-
-Checkout my past [projects](/projects) or my <a href="{{ site.baseurl }}/assets/resume.pdf" target="_blank">resume</a>. Feel free to [contact](/contact) me anytime.
+* <a href="{{ site.baseurl }}/assets/resume.pdf" target="_blank">Resume</a>, [past projects](/projects),, and [contact information](/contact).
+* Open-source maintainer of:
+    * <a href="https://github.com/bazel-ios/rules_ios" target="_blank">rules_ios</a>
+    * <a href="https://github.com/bazel-ios/cocoapods-bazel" target="_blank">cocoapods-bazel</a>
+    * <a href="https://github.com/MobileNativeFoundation/rules_xcodeproj" target="_blank">rules_xcodeproj</a>
